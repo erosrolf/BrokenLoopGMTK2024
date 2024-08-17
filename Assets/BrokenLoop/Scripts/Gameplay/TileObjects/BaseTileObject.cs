@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BrokenLoop.Scripts.TileObjects
+namespace BrokenLoop.Gameplay
 {
     public abstract class BaseTileObject
     {
