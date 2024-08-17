@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
-namespace BrokenLoop.Scripts.TileObjects
+namespace BrokenLoop.Gameplay
 {
+    [Serializable]
     public abstract class BaseTileObject
     {
         public readonly string Id;

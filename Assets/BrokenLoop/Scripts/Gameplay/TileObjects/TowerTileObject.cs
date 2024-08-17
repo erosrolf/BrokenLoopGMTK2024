@@ -2,14 +2,14 @@ using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
 using UnityEngine;
 
-namespace BrokenLoop.Scripts.TileObjects
+namespace BrokenLoop.Gameplay
 {
-    public class Tower : BaseTileObject, IAttackable, IDamagable, IMovement
+    public class TowerTileObject : BaseTileObject, IAttackable, IDamagable, IMovement
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
         
-        public Tower(string id, GameObject prefab, IAttackStrategy attackStrategy) : base(id, prefab)
+        public TowerTileObject(string id, GameObject prefab, IAttackStrategy attackStrategy) : base(id, prefab)
         {
             _attackStrategy = attackStrategy;
         }
