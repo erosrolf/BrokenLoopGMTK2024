@@ -20,7 +20,8 @@ namespace BrokenLoop.Gameplay
                 new (4, 2),
                 new (4, -3),
                 new (-5, -3),
-                new (-5, 1)
+                new (-5, 1),
+                new (-1, 1)
             };
         }
 
