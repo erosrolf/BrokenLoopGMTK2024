@@ -9,6 +9,8 @@ namespace BrokenLoop.Scripts.Gameplay
     [RequireComponent(typeof(Movement2dInput))]
     public class Player : MonoBehaviour
     {
+        public bool IsLookingRight { get; private set; }
+        
         private IMovement _movement;
         private Movement2dInput _movementInput;
 
@@ -17,6 +19,7 @@ namespace BrokenLoop.Scripts.Gameplay
         {
             _movement = GetComponent<IMovement>() ?? throw new Exception("Player doesn't have movement component!");
             _movementInput = GetComponent<Movement2dInput>();
+            IsLookingRight = true;
         }
         
         #endregion
@@ -24,6 +27,15 @@ namespace BrokenLoop.Scripts.Gameplay
         private void FixedUpdate()
         {
             _movement.Move(_movementInput.MoveDirection);
+            if (_movementInput.IsInputActive)
+            {
+                IsLookingRight = _movementInput.MoveDirection.x >= 0;
+            }
+        }
+
+        private void HorizontalFlip()
+        {
+            
         }
     }
 }
