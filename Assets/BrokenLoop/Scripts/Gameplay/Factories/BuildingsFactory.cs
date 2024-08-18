@@ -6,11 +6,40 @@ namespace BrokenLoop.Gameplay
 {
     public class BuildingsFactory : MonoBehaviour
     {
+        private static BuildingsFactory _instance;
         private Dictionary<EBuildingType, GameObject> _tilePrefabs;
         private int _lastId;
 
+        public static BuildingsFactory Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<BuildingsFactory>();
+                    
+                    if (_instance == null)
+                    {
+                        GameObject singletonObject = new GameObject();
+                        _instance = singletonObject.AddComponent<BuildingsFactory>();
+                        singletonObject.name = typeof(EnemyFactory).ToString();
+                    }
+                }
+
+                return _instance;
+            }
+        }
+        
         private void Awake()
         {
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                Debug.LogError("You trying to create a second singletone!");
+                return;
+            }
+
+            _instance = this;
             LoadTilePrefabsFromResources();
         }
 
