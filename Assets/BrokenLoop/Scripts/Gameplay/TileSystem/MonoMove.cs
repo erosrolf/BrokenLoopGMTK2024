@@ -9,9 +9,12 @@ public class MonoMove: MonoBehaviour
     public Camera camera;
     public GameObject tree;
     MoveObjectOnTilemap moveObjectOnTile;
+    SetObjectOnTile setObjectOnTile;
     private void Start()
     {
-        moveObjectOnTile = new(tilemap, tilemapObject,tree);
+        moveObjectOnTile = new(tilemap,tree);
+        setObjectOnTile = new(tilemap, camera);
+        Debug.Log($"H {camera.pixelHeight} and W {camera.pixelWidth}"); 
     }
     private void Update()
     {
@@ -33,6 +36,13 @@ public class MonoMove: MonoBehaviour
         {
             Debug.Log("A");
             moveObjectOnTile.Push(new(-1, 0, 0));
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            var objectSpawn = Instantiate(tree);
+            setObjectOnTile.SetObjectOnMapRandom(objectSpawn);
+            Debug.Log(setObjectOnTile.GetRandomPointCamera());
         }
     }
 }

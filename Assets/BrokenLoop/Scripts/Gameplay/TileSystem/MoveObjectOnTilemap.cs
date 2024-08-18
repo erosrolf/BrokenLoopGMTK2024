@@ -1,19 +1,15 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
 {
-    public class MoveObjectOnTilemap : IMovebleTile
+    public class MoveObjectOnTilemap : IMovebleTilemap
     {
-        private Tilemap _objectMap;
         private Tilemap _tilemap;
         private GameObject _gameObject;
-        public MoveObjectOnTilemap(Tilemap tilemap, Tilemap objectMap, GameObject gameObject) { 
+        public MoveObjectOnTilemap(Tilemap tilemap, GameObject gameObject) { 
             _tilemap = tilemap;
             _gameObject = gameObject;
-            _objectMap = objectMap;
         }
 
         public bool Push(Vector3Int direction)
