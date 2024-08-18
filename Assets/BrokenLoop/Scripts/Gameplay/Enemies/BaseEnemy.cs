@@ -3,26 +3,17 @@ using UnityEngine;
 
 namespace BrokenLoop.Gameplay
 {
-    public abstract class BaseEnemy : IMovement, IAttackable, IDamagable
+    public abstract class BaseEnemy : MonoBehaviour, IMovement, IAttackable, IDamagable
     {
-        protected IAttackStrategy _attackStrategy;
-        private GameObject _prefab;
-        private Health _health;
-        
-        public Vector2 Position => (Vector2)_prefab.transform.position;
-
-        public BaseEnemy(GameObject prefab, int health, IAttackStrategy attackStrategy)
-        {
-            _prefab = prefab;
-            _health = new Health(health, _prefab);
-            _attackStrategy = attackStrategy;
-        }
+        public string ID { get; }
+        protected Health _health;
+        protected float _speed;
 
         public abstract void Move(Vector3 direction);
 
         public virtual void RestorePosition(Vector3 position)
         {
-            throw new System.NotImplementedException();
+            transform.position = position;
         }
 
         public abstract void Attack(IDamagable[] targets, IAttackStrategy attackStrategy);

@@ -4,15 +4,10 @@ using UnityEngine;
 
 namespace BrokenLoop.Gameplay
 {
-    public class TowerTileObject : BaseTileObject, IAttackable, IDamagable, IMovement
+    public class RoundTower : BaseBuilding, IAttackable, IDamagable, IMovement
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
-        
-        public TowerTileObject(string id, GameObject prefab, IAttackStrategy attackStrategy) : base(id, prefab)
-        {
-            _attackStrategy = attackStrategy;
-        }
 
         public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
         {
@@ -31,7 +26,7 @@ namespace BrokenLoop.Gameplay
 
         public void RestorePosition(Vector3 position)
         {
-            throw new System.NotImplementedException();
+            transform.position = position;
         }
     }
 }
