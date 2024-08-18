@@ -11,10 +11,11 @@ namespace BrokenLoop.Scripts.Gameplay
     public class Player : MonoBehaviour
     {
         public bool IsLookingRight { get; private set; }
-        
+
         private IMovement _movement;
         private Movement2dInput _movementInput;
         private SpriteRenderer _spriteRenderer;
+        private Animator _animator;
 
         #region MONO
         private void Awake()
@@ -23,8 +24,9 @@ namespace BrokenLoop.Scripts.Gameplay
             _movementInput = GetComponent<Movement2dInput>();
             IsLookingRight = true;
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _animator = GetComponent<Animator>();
         }
-        
+
         private void FixedUpdate()
         {
             _movement.Move(_movementInput.MoveDirection);
@@ -32,8 +34,10 @@ namespace BrokenLoop.Scripts.Gameplay
             {
                 _spriteRenderer.flipX = _movementInput.MoveDirection.x < 0;
             }
+
+            _animator.SetFloat("Speed", Math.Abs(1.0f));
         }
-        
+
         #endregion
     }
 }
