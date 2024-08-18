@@ -5,13 +5,14 @@ using Random = System.Random;
 
 namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
 {
-    public class SetObjectOnTile
+    public class PositionOnTileCamera
     {
         Tilemap _tilemap;
         Camera _camera;
         Random random = new Random();
         int i = 100;
-        public SetObjectOnTile(Tilemap tilemap, Camera camera){ 
+        public PositionOnTileCamera(Tilemap tilemap, Camera camera)
+        { 
             _tilemap = tilemap;
             _camera = camera;
             _camera.orthographic = true;
