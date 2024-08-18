@@ -1,6 +1,6 @@
 using System.Collections;
+using BrokenLoop.Gameplay;
 using BrokenLoop.GameRoot.Unils;
-using BrokenLoop.Scripts.Gameplay.Root;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
