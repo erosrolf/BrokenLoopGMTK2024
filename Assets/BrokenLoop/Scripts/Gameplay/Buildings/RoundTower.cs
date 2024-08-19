@@ -7,19 +7,14 @@ namespace BrokenLoop.Gameplay
     public class RoundTower : BaseBuilding, IAttackable, IDamagable, IMovement
     {
         private IAttackStrategy _attackStrategy;
-        private Health _health;
         
         private void Awake()
         {
+            Health = 10;
             ID = _lastID++.ToString();
         }
 
-        public void Attack(IDamagable target, IAttackStrategy attackStrategy)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TakeDamage(int damage)
+        public void Attack()
         {
             throw new System.NotImplementedException();
         }

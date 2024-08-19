@@ -6,17 +6,16 @@ namespace BrokenLoop.Scripts.Gameplay.Buildings
     [RequireComponent(typeof(BoxCollider2D))]
     public class TronBuilding : BaseBuilding, IDamagable
     {
-        private Health _health;
         private void Awake()
         {
+            Health = 100;
             ID = "TRON";
-            _health = new Health(100);
         }
-        
-        public void TakeDamage(int damage)
+
+        public override void TakeDamage(int amount)
         {
-            _health.TakeDamage(damage);
-            Debug.Log($"Tron was attacked, new health amount = {_health.Amount}");
+            base.TakeDamage(amount);
+            Debug.Log($"Tron take damage, health amount = {Health}");
         }
     }
 }

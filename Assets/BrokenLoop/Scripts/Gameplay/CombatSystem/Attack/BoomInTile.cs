@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace BrokenLoop.Gameplay
@@ -6,6 +7,7 @@ namespace BrokenLoop.Gameplay
     public class BoomInTile : MonoBehaviour, IAttackable
     {
         private Animator _animator;
+        private AttackInCellStrategy _attackStrategy;
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -13,12 +15,23 @@ namespace BrokenLoop.Gameplay
 
         private void Start()
         {
+            StartCoroutine(AttackRoutine());
         }
 
-        public void Attack(IDamagable target, IAttackStrategy attackStrategy)
+        public IEnumerator AttackRoutine()
         {
-            _animator.Play("Boom");
-            throw new System.NotImplementedException();
+            while (true)
+            {
+                Attack();
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+
+        public void Attack()
+        {
+            _animator.Play("BoomAnimation");
+            _attackStrategy = new AttackInCellStrategy(transform.position, 10);
+            _attackStrategy.Attack();
         }
     }
 }
