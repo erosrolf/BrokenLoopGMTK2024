@@ -13,6 +13,7 @@ namespace BrokenLoop.Scripts.TileObjects
         {
             Health = 10;
             ID = _lastID++.ToString();
+            _attackStrategy = new AttackInCellStrategy(transform.position, 1);
         }
 
         public void Attack()

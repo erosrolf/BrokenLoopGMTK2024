@@ -24,9 +24,8 @@ namespace BrokenLoop.Gameplay
             Health = 2;
             _movement = GetComponent<MovementWithRigidbody2d>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _triggerCollider = gameObject.AddComponent<CircleCollider2D>();
+            _triggerCollider = GetComponent<CircleCollider2D>();
             _triggerCollider.isTrigger = true;
-            _triggerCollider.radius = 0.5f;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
