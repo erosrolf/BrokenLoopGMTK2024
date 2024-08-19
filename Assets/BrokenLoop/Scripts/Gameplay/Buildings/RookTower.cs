@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BrokenLoop.Scripts.TileObjects
 {
-    public class RookTower : BaseBuilding, IDamagable, IMovement
+    public class RookTower : BaseBuilding, IDamagable, IMovement, IMovebleTilemap
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
@@ -38,6 +38,11 @@ namespace BrokenLoop.Scripts.TileObjects
         public void RestorePosition(Vector3 position)
         {
             transform.position = position;
+        }
+
+        public bool Push(Vector3Int direction)
+        {
+            return _movebleTilemap.Push(direction);
         }
     }
 }
