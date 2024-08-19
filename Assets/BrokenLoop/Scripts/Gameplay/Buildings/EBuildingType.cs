@@ -4,5 +4,6 @@ namespace BrokenLoop.Gameplay
     {
         RookTower,
         RoundTower,
+        Tron,
     }
 }

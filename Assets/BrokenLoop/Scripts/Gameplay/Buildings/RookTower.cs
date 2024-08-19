@@ -1,3 +1,4 @@
+using System;
 using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
 using UnityEngine;
@@ -8,6 +9,11 @@ namespace BrokenLoop.Scripts.TileObjects
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
+
+        private void Awake()
+        {
+            ID = _lastID++.ToString();
+        }
 
         public void Attack(IDamagable target, IAttackStrategy attackStrategy)
         {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BrokenLoop.Scripts.Gameplay.Buildings;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -53,7 +54,7 @@ namespace BrokenLoop.Gameplay
 
             var instance = Instantiate(prefab, position, rotation);
             var baseBuilding = instance.GetComponent<BaseBuilding>();
-            baseBuilding.Construct(NewId());
+            BuildingCollection.Instance.RegisterBuilding(baseBuilding);
             return baseBuilding;
         }
 
@@ -62,13 +63,9 @@ namespace BrokenLoop.Gameplay
             _tilePrefabs = new Dictionary<EBuildingType, GameObject>
             {
                 { EBuildingType.RookTower , Resources.Load<GameObject>("Towers/RookTowerPrefab")},
-                { EBuildingType.RoundTower , Resources.Load<GameObject>("Towers/RoundTowerPrefab")}
+                { EBuildingType.RoundTower , Resources.Load<GameObject>("Towers/RoundTowerPrefab")},
+                { EBuildingType.Tron, Resources.Load<GameObject>("TronPrefab")}
             };
-        }
-
-        private string NewId()
-        {
-            return _lastId++.ToString();
         }
     }
 }

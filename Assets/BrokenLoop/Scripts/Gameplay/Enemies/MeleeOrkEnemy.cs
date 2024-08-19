@@ -30,7 +30,7 @@ namespace BrokenLoop.Gameplay
             _attackStrategy = new SimpleAttackStrategy();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent(typeof(BaseBuilding), out var building))
             {
