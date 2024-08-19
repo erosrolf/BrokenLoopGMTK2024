@@ -44,13 +44,13 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             }
 
             _instance = this;
-            LoadObstacleTiles();
         }
         private void Start()
         {
             _camera = FindFirstObjectByType<Camera>();
             tilemap = FindFirstObjectByType<Tilemap>();
             _camera.orthographic = true;
+            LoadObstacleTiles();
             RefreshGround();
         }
         public void RefreshGround()
@@ -82,7 +82,8 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
         }
         private void LoadObstacleTiles()
         {
-            obstacle = Resources.LoadAll<Tile>("TilePalle/ObstacleTile/");
+            obstacle = Resources.LoadAll<Tile>("TilePallete/ObstacleTile/");
+            Debug.Log(obstacle.Length);
         }
     }
 }

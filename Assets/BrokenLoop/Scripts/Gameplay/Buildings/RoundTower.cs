@@ -1,14 +1,19 @@
+using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
 using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
 using UnityEngine;
 
 namespace BrokenLoop.Gameplay
 {
-    public class RoundTower : BaseBuilding, IAttackable, IDamagable, IMovement
+    public class RoundTower : BaseBuilding, IAttackable, IDamagable, IMovement, IMovebleTilemap
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
-
+        IMovebleTilemap _movebleTilemap;
+        private void Start()
+        {
+            _movebleTilemap = new MoveObjectOnTilemap(gameObject);
+        }
         public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
         {
             throw new System.NotImplementedException();
@@ -27,6 +32,11 @@ namespace BrokenLoop.Gameplay
         public void RestorePosition(Vector3 position)
         {
             transform.position = position;
+        }
+
+        public bool Push(Vector3Int direction)
+        {
+            return _movebleTilemap.Push(direction);
         }
     }
 }

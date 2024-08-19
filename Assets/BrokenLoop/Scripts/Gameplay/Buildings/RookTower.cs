@@ -1,3 +1,4 @@
+using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
 using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
 using UnityEngine;
@@ -8,7 +9,11 @@ namespace BrokenLoop.Scripts.TileObjects
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
-        IMovebleTilemap _movebleTilemap; // как в него записать new MoveObjectOnTilemap(TileMap по которому двигать, Gameobject который двигать)
+        IMovebleTilemap _movebleTilemap;
+        private void Start()
+        {
+            _movebleTilemap = new MoveObjectOnTilemap(gameObject);
+        }
         public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
         {
             throw new System.NotImplementedException();
