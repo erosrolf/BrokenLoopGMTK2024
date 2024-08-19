@@ -1,15 +1,21 @@
+using System;
 using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
 using UnityEngine;
 
 namespace BrokenLoop.Scripts.TileObjects
 {
-    public class RookTower : BaseBuilding, IAttackable, IDamagable, IMovement, IMovebleTilemap
+    public class RookTower : BaseBuilding, IAttackable, IDamagable, IMovement
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
-        IMovebleTilemap _movebleTilemap; // как в него записать new MoveObjectOnTilemap(TileMap по которому двигать, Gameobject который двигать)
-        public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
+
+        private void Awake()
+        {
+            ID = _lastID++.ToString();
+        }
+
+        public void Attack(IDamagable target, IAttackStrategy attackStrategy)
         {
             throw new System.NotImplementedException();
         }
@@ -27,11 +33,6 @@ namespace BrokenLoop.Scripts.TileObjects
         public void RestorePosition(Vector3 position)
         {
             transform.position = position;
-        }
-
-        public bool Push(Vector3Int direction)
-        {
-            return _movebleTilemap.Push(direction); // наш метод для вдижения
         }
     }
 }

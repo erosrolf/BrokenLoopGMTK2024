@@ -8,8 +8,13 @@ namespace BrokenLoop.Gameplay
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
+        
+        private void Awake()
+        {
+            ID = _lastID++.ToString();
+        }
 
-        public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
+        public void Attack(IDamagable target, IAttackStrategy attackStrategy)
         {
             throw new System.NotImplementedException();
         }

@@ -9,17 +9,17 @@ namespace BrokenLoop.Gameplay
         public string ID { get; protected set; }
         protected Health _health;
         protected float _speed;
-
-        public abstract void Construct(string id, int health, int damage, Vector2Int[] path);
-        
-        public abstract void Move(Vector3 direction);
+        protected static uint _lastId;
 
         public virtual void RestorePosition(Vector3 position)
         {
             transform.position = position;
         }
+        public abstract void ConstructPath(Vector2Int[] path);
+        public abstract void Move(Vector3 direction);
 
-        public abstract void Attack(IDamagable[] targets, IAttackStrategy attackStrategy);
+
+        public abstract void Attack(IDamagable target, IAttackStrategy attackStrategy);
 
         public void TakeDamage(int damage) => _health.TakeDamage(damage);
     }

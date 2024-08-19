@@ -6,7 +6,7 @@ namespace BrokenLoop.Gameplay
     {
         public int Amount { get; private set; }
         
-        public Health(int amount, GameObject _prefab)
+        public Health(int amount)
         {
             Amount = amount;
         }

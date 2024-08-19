@@ -2,6 +2,6 @@ namespace BrokenLoop.Gameplay
 {
     public interface IAttackStrategy
     {
-        public void Attack(BaseEnemy[] targets, int damage);
+        public void Attack(IDamagable target, int damage);
     }
 }
