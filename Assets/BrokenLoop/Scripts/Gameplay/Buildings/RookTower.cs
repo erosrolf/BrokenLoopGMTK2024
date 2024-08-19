@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BrokenLoop.Scripts.TileObjects
 {
-    public class RookTower : BaseBuilding, IAttackable, IDamagable, IMovement
+    public class RookTower : BaseBuilding, IDamagable, IMovement
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;

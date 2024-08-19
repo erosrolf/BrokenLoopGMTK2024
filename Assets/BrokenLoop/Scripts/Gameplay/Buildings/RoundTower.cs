@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BrokenLoop.Gameplay
 {
-    public class RoundTower : BaseBuilding, IAttackable, IDamagable, IMovement, IMovebleTilemap
+    public class RoundTower : BaseBuilding, IDamagable, IMovement, IMovebleTilemap
     {
         private IAttackStrategy _attackStrategy;
         private Health _health;
