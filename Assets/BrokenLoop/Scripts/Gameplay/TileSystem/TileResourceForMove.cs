@@ -8,10 +8,10 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
     public class TileResourceForMove: MonoBehaviour
     {
         private static TileResourceForMove _instance;
-        public Tilemap tilemap;
-        public Tile[] obstacle;
-        public Camera _camera;
-        List<Vector3> filledCellWorldPositions = new List<Vector3>();
+        private Tilemap tilemap;
+        private Tile[] obstacle;
+        private Camera _camera;
+        private List<Vector3> filledCellWorldPositions = new List<Vector3>();
         public float offsetBorder = 1;
 
         public static TileResourceForMove Instance
@@ -44,9 +44,12 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             }
 
             _instance = this;
+            LoadObstacleTiles();
         }
         private void Start()
         {
+            _camera = FindFirstObjectByType<Camera>();
+            tilemap = FindFirstObjectByType<Tilemap>();
             _camera.orthographic = true;
             RefreshGround();
         }
@@ -76,6 +79,10 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             }
             filledCellWorldPositions.Clear();
             filledCellWorldPositions.AddRange(buffer);
+        }
+        private void LoadObstacleTiles()
+        {
+            obstacle = Resources.LoadAll<Tile>("TilePalle/ObstacleTile/");
         }
     }
 }

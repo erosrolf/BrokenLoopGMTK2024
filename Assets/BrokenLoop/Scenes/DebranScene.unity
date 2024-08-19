@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -377,27 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f335eae026bab4548ad2e9f42a054ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 1458742264}
-  obstacle:
-  - {fileID: 11400000, guid: 85aacdff6d8fb414dad4f12e355f9777, type: 2}
-  - {fileID: 11400000, guid: a3d2d39efcc0eb548a8439e146cdf1e4, type: 2}
-  - {fileID: 11400000, guid: 399b953101d04794385780607fdfd6d9, type: 2}
-  - {fileID: 11400000, guid: 8b86e6682b0a04743b08252c283d8595, type: 2}
-  - {fileID: 11400000, guid: 4be5ac985315d754aa3b23246d9aecd5, type: 2}
-  - {fileID: 11400000, guid: 329f2b8beeb55bc448394caf3eed038b, type: 2}
-  - {fileID: 11400000, guid: 7f5de2bcd51a0d54eb18067e9cc82840, type: 2}
-  - {fileID: 11400000, guid: 5dd89593130cf954f923048c7581a346, type: 2}
-  - {fileID: 11400000, guid: 119983091ab765d42a40d92a236ac9ac, type: 2}
-  - {fileID: 11400000, guid: 68fe3c01a3b1bb341ac9b144451678d8, type: 2}
-  - {fileID: 11400000, guid: 56dba6be46ef66c4c81668e17b0c7e8c, type: 2}
-  - {fileID: 11400000, guid: 995c92dd3d8949b42904417740f52538, type: 2}
-  - {fileID: 11400000, guid: e82d3975c5da94a4b8a4535bf3884b1a, type: 2}
-  - {fileID: 11400000, guid: aa74394a7d0826145a0a247644615223, type: 2}
-  - {fileID: 11400000, guid: 481944dbca59b114ab4dc3b5f48c0eec, type: 2}
-  - {fileID: 11400000, guid: 93a099bf9c0e9c04b96630deee9d8954, type: 2}
-  - {fileID: 11400000, guid: 154bbdb0413e1a74e8d88d2539895715, type: 2}
-  - {fileID: 11400000, guid: 1e4251315d1e42a48a800a7712616cb7, type: 2}
-  _camera: {fileID: 799377817}
   offsetBorder: 2
 --- !u!1 &799377813
 GameObject:
@@ -618,7 +597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &840005903
 Transform:
   m_ObjectHideFlags: 0
