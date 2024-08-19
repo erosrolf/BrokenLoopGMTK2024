@@ -18,9 +18,11 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             _camera.orthographic = true;
         }
 
-        public void SetObjectOnMapRandom(GameObject gameObject)
+        public Vector3 SetObjectOnMapRandom(GameObject gameObject)
         {
-            gameObject.transform.position = GetRandomPointOnTailmap();
+            Vector3 position = GetRandomPointOnTailmap();
+            gameObject.transform.position = position;
+            return position;
         }
         public void SetObjectOnMapToPoint(GameObject gameObject, Vector3 point)
         {

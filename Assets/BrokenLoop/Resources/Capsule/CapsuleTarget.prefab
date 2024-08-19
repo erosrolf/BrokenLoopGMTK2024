@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3363667726693827312}
   - component: {fileID: 6077769658635306279}
   - component: {fileID: 5099405190981955498}
+  - component: {fileID: -2568867200941875871}
   m_Layer: 0
   m_Name: CapsuleTarget
   m_TagString: Untagged
@@ -107,3 +108,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2568867200941875871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6118992122333021106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e383fbbadd80c99469b06404d78a1d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSpawnSecond: 5

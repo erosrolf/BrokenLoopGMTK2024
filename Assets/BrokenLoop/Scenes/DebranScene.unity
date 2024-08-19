@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,12 +154,79 @@ Transform:
   - {fileID: 799377814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &268561772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 195219178207515401, guid: 890ed21401a1e6c4899a4fbfc83c51ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1048071201}
-  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &266521639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363667726693827312, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099405190981955498, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8e02999be489a43439b8cf4074f5bd8e, type: 2}
+    - target: {fileID: 6118992122333021106, guid: 3ed685c5f2609244595fbae31754b436,
+        type: 3}
+      propertyPath: m_Name
+      value: CapsuleTarget
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ed685c5f2609244595fbae31754b436, type: 3}
 --- !u!4 &268561775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5120421580725949135, guid: 890ed21401a1e6c4899a4fbfc83c51ca,
@@ -434,9 +501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1458742264}
-  tilemapObject: {fileID: 840005905}
   camera: {fileID: 799377817}
-  tree: {fileID: 268561772}
+  capsulePredab: {fileID: 6118992122333021106, guid: 3ed685c5f2609244595fbae31754b436,
+    type: 3}
+  SpawnSecond: 2
 --- !u!4 &730195472
 Transform:
   m_ObjectHideFlags: 0
@@ -3490,3 +3558,4 @@ SceneRoots:
   - {fileID: 1744332906}
   - {fileID: 557315131}
   - {fileID: 730195472}
+  - {fileID: 266521639}
