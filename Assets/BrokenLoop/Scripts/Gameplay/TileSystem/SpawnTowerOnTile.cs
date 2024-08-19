@@ -1,32 +1,32 @@
-﻿using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SpawnTowerOnTile: MonoBehaviour
+namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
 {
-    public Tilemap tilemap;
-    public Camera camera;
-    PositionOnTileCamera setObjectOnTile;
-    public GameObject capsulePredab;
-    public int SpawnSecond = 2;
-    private void Start()
+    public class SpawnTowerOnTile : MonoBehaviour
     {
-        setObjectOnTile = new(tilemap, camera);
-        StartCoroutine(Spawner());
-    }
-     
-    IEnumerator Spawner()
-    {
-        while(gameObject.activeSelf)
+        
+        public GameObject capsule;
+        public int timeSpawnCapsule = 10;
+        private void Start()
         {
-            yield return new WaitForSeconds(SpawnSecond);
-            CreateCapsule();
+            StartCoroutine(Spawner());
         }
-    }
-    private void CreateCapsule() 
-    {
-        var objectSpawn = Instantiate(capsulePredab);
-        setObjectOnTile.SetObjectOnMapRandom(objectSpawn);
+
+
+        IEnumerator Spawner()
+        {
+            TileResourceForMove tileResource = TileResourceForMove.Instance;
+            while (gameObject.activeSelf)
+            {
+                yield return new WaitForSeconds(timeSpawnCapsule);
+                int i = Random.Range(0, tileResource.GetListMoveTile().Count);
+                Instantiate(capsule, tileResource.GetListMoveTile()[i],Quaternion.identity);
+            }
+        }
     }
 }
