@@ -29,7 +29,7 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             gameObject.transform.position = GetRandomPointOnTailmap();
         }
 
-        public Vector3 GetRandomPointOnTailmap()
+        private Vector3 GetRandomPointOnTailmap()
         {
             // Определение случайной позиции на экране
             float randomX = random.Next(0+i, _camera.pixelWidth - i);
