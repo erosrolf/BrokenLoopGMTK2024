@@ -45,7 +45,7 @@ namespace BrokenLoop.Gameplay
             while (true)
             {
                 var ork = EnemyFactory.Instance.CreateInstance(EEnemyType.MeleeOrk, transform.position);
-                ork.Construct(_enemyFactory.NewID(), 10, 1, _path);
+                ork.ConstructPath(_path);
                 yield return new WaitForSeconds(2f);
             }
         }

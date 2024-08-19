@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MovementSystem;
@@ -12,24 +13,48 @@ namespace BrokenLoop.Gameplay
     {
         private MovementWithRigidbody2d _movement;
         private Queue<Vector2Int> _movementPath;
-        private bool _constructed;
         private SpriteRenderer _spriteRenderer;
+        private IAttackStrategy _attackStrategy;
+        private CircleCollider2D _triggerCollider;
+
+        #region MONO
+        private void Awake()
+        {
+            ID = _lastId++.ToString();
+            _health = new Health(10);
+            _movement = GetComponent<MovementWithRigidbody2d>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _triggerCollider = gameObject.AddComponent<CircleCollider2D>();
+            _triggerCollider.isTrigger = true;
+            _triggerCollider.radius = 0.5f;
+            _attackStrategy = new SimpleAttackStrategy();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(typeof(BaseBuilding), out var building))
+            {
+                if (building is IDamagable target)
+                {
+                    Attack(target, _attackStrategy);
+                    EnemyCollection.Instance.UnregisterEnemy(ID);
+                    Destroy(gameObject);
+                }
+            }
+        }
+        #endregion
 
         private void FixedUpdate()
         {
-            if (_constructed == false)
-                return;
-            
-            Move((Vector3)CalculateDirection());
+            if (_movementPath.Count > 0)
+            {
+                Move((Vector3)CalculateDirection());
+            }
         }
         
-        public override void Construct(string id, int health, int damage, Vector2Int[] path)
+        public override void ConstructPath(Vector2Int[] path)
         {
-            _health = new Health(health, gameObject);
             _movementPath = new Queue<Vector2Int>(path);
-            _movement = GetComponent<MovementWithRigidbody2d>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-            _constructed = true;
         }
 
         public override void Move(Vector3 direction)
@@ -38,9 +63,9 @@ namespace BrokenLoop.Gameplay
             _movement.Move(direction);
         }
 
-        public override void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
+        public override void Attack(IDamagable target, IAttackStrategy attackStrategy)
         {
-            //TODO: ork attack
+            _attackStrategy.Attack(target, 1); 
         }
 
         private Vector2 CalculateDirection()

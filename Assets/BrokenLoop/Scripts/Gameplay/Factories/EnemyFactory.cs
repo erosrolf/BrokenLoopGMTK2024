@@ -7,7 +7,6 @@ namespace BrokenLoop.Gameplay
     {
         private static EnemyFactory _instance;
         private Dictionary<EEnemyType, GameObject> _enemyPrefabs;
-        private int _lastID;
         
         public static EnemyFactory Instance
         {
@@ -49,6 +48,7 @@ namespace BrokenLoop.Gameplay
         {
             var instantiate = Instantiate(_enemyPrefabs[enemyType], position, rotation);
             var baseEnemy = instantiate.GetComponent<BaseEnemy>();
+            EnemyCollection.Instance.RegisterEnemy(baseEnemy);
             return baseEnemy;
         }
 
@@ -58,11 +58,6 @@ namespace BrokenLoop.Gameplay
             {
                 { EEnemyType.MeleeOrk , Resources.Load<GameObject>("Enemies/MeleeOrkPrefab")},
             };
-        }
-
-        public string NewID()
-        {
-            return _lastID.ToString();
         }
     }
 }

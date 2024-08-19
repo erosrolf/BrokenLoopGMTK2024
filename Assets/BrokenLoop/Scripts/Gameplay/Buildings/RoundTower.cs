@@ -9,7 +9,7 @@ namespace BrokenLoop.Gameplay
         private IAttackStrategy _attackStrategy;
         private Health _health;
 
-        public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
+        public void Attack(IDamagable target, IAttackStrategy attackStrategy)
         {
             throw new System.NotImplementedException();
         }
