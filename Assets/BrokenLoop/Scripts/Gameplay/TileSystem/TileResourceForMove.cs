@@ -77,7 +77,7 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             foreach (var position in bounds.allPositionsWithin)
             {
                 var tile = tilemap.GetTile(position);
-                if (tile != null && obstacle.Contains(tile))
+                if (tile != null && !obstacle.Contains(tile))
                 {
                     Vector3 worldPosition = tilemap.GetCellCenterWorld(position);
                     if (worldPosition.x < upperRight.x && worldPosition.x > lowerLeft.x &&
@@ -92,7 +92,7 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
         }
         private void LoadObstacleTiles()
         {
-            obstacle = Resources.LoadAll<Tile>("TilePallete/MoveTile/");
+            obstacle = Resources.LoadAll<Tile>("TilePallete/ObstacleTile/");
         }
     }
 }
