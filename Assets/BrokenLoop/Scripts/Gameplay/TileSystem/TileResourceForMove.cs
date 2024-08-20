@@ -50,16 +50,25 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             _camera = FindFirstObjectByType<Camera>();
             //tilemap = FindFirstObjectByType<Tilemap>();
             tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
-            _camera.orthographic = true;
+            if (tilemap == null) Debug.Log("Yes");
+            //_camera.orthographic = true;
             LoadObstacleTiles();
             RefreshGround();
         }
         public void RefreshGround()
         {
             List<Vector3> buffer = new List<Vector3>();
-
-            Vector3 upperRight = _camera.ViewportToWorldPoint(new Vector3(1, 1, _camera.nearClipPlane));
-            Vector3 lowerLeft = _camera.ViewportToWorldPoint(new Vector3(0, 0, _camera.nearClipPlane));
+            Vector3 upperRight;
+            Vector3 lowerLeft;
+            if(_camera.orthographic)
+            {
+                upperRight = _camera.ViewportToWorldPoint(new Vector3(1, 1, _camera.nearClipPlane));
+                lowerLeft = _camera.ViewportToWorldPoint(new Vector3(0, 0, _camera.nearClipPlane));
+            } else
+            {
+                upperRight = _camera.ViewportToWorldPoint(new Vector3(1, 1, _camera.farClipPlane));
+                lowerLeft = _camera.ViewportToWorldPoint(new Vector3(0, 0, _camera.farClipPlane));
+            }
             upperRight.x -= offsetBorder;
             upperRight.y -= offsetBorder;
             lowerLeft.x += offsetBorder;
@@ -68,7 +77,7 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
             foreach (var position in bounds.allPositionsWithin)
             {
                 var tile = tilemap.GetTile(position);
-                if (tile != null && !obstacle.Contains(tile))
+                if (tile != null && obstacle.Contains(tile))
                 {
                     Vector3 worldPosition = tilemap.GetCellCenterWorld(position);
                     if (worldPosition.x < upperRight.x && worldPosition.x > lowerLeft.x &&
@@ -83,7 +92,7 @@ namespace Assets.BrokenLoop.Scripts.Gameplay.TileSystem
         }
         private void LoadObstacleTiles()
         {
-            obstacle = Resources.LoadAll<Tile>("TilePallete/ObstacleTile/");
+            obstacle = Resources.LoadAll<Tile>("TilePallete/MoveTile/");
         }
     }
 }
