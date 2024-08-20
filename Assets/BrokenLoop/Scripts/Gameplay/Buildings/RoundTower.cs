@@ -1,34 +1,39 @@
-using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
-using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
+using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
+using System.Collections;
 using UnityEngine;
 
 namespace BrokenLoop.Gameplay
 {
+    [RequireComponent(typeof(BoomXAttack))]
     public class RoundTower : BaseBuilding, IDamagable, IMovement, IMovebleTilemap
     {
-        private IAttackStrategy _attackStrategy;
-        private Health _health;
         IMovebleTilemap _movebleTilemap;
 
+        [SerializeField, Range(0.1f, 1f)] private float _cooldown;
+        private BoomXAttack _boomXAttack;
+        
+        public bool IsCanAttack { get; private set; }
+        
         private void Awake()
         {
+            Health = 10;
             ID = _lastID++.ToString();
-        }
-        private void Start()
-        {
+            _boomXAttack = GetComponent<BoomXAttack>();
+            IsCanAttack = true;
             _movebleTilemap = new MoveObjectOnTilemap(gameObject);
         }
-        public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
+        
+        private void Start()
         {
-            throw new System.NotImplementedException();
+            StartCoroutine(AttackRoutine(3f));
         }
 
-        public void TakeDamage(int damage)
+        public void Attack()
         {
-            throw new System.NotImplementedException();
+            StartCoroutine(AttackRoutine(3f));
         }
-
+        
         public void Move(Vector3 direction)
         {
             throw new System.NotImplementedException();
@@ -42,6 +47,21 @@ namespace BrokenLoop.Gameplay
         public bool Push(Vector3Int direction)
         {
             return _movebleTilemap.Push(direction);
+        }
+        
+        private IEnumerator ResetAttackCooldown()
+        {
+            yield return new WaitForSeconds(_cooldown);
+            IsCanAttack = true;
+        }
+
+        private IEnumerator AttackRoutine(float delay)
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(delay);
+                _boomXAttack.Attack();
+            }
         }
     }
 }

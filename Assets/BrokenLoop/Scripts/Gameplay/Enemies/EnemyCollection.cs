@@ -5,6 +5,8 @@ namespace BrokenLoop.Gameplay
 {
     public class EnemyCollection
     {
+        public int Count => _enemies.Count;
+        
         private static EnemyCollection _instance;
         public static EnemyCollection Instance
         {
