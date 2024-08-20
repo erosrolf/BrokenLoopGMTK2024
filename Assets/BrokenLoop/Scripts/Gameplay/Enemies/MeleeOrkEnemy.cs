@@ -14,20 +14,18 @@ namespace BrokenLoop.Gameplay
         private MovementWithRigidbody2d _movement;
         private Queue<Vector2Int> _movementPath;
         private SpriteRenderer _spriteRenderer;
-        private IAttackStrategy _attackStrategy;
         private CircleCollider2D _triggerCollider;
+        private SingleTargetAttackStrategy _attackStrategy;
 
         #region MONO
         private void Awake()
         {
             ID = _lastId++.ToString();
-            _health = new Health(10);
+            Health = 2;
             _movement = GetComponent<MovementWithRigidbody2d>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _triggerCollider = gameObject.AddComponent<CircleCollider2D>();
+            _triggerCollider = GetComponent<CircleCollider2D>();
             _triggerCollider.isTrigger = true;
-            _triggerCollider.radius = 0.5f;
-            _attackStrategy = new SimpleAttackStrategy();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -36,7 +34,8 @@ namespace BrokenLoop.Gameplay
             {
                 if (building is IDamagable target)
                 {
-                    Attack(target, _attackStrategy);
+                    _attackStrategy = new SingleTargetAttackStrategy(target, 2);
+                    Attack();
                     EnemyCollection.Instance.UnregisterEnemy(ID);
                     Destroy(gameObject);
                 }
@@ -63,9 +62,21 @@ namespace BrokenLoop.Gameplay
             _movement.Move(direction);
         }
 
-        public override void Attack(IDamagable target, IAttackStrategy attackStrategy)
+        public override void Attack()
         {
-            _attackStrategy.Attack(target, 1); 
+            _attackStrategy.Attack();
+        }
+
+        public override void TakeDamage(int amount)
+        {
+            if (amount < 0) return;
+            Health -= amount;
+            Debug.Log($"Ork taked damage, health amount = {Health}");
+            if (Health <= 0)
+            {
+                EnemyCollection.Instance.UnregisterEnemy(ID);
+                Destroy(gameObject);
+            }
         }
 
         private Vector2 CalculateDirection()
@@ -92,6 +103,5 @@ namespace BrokenLoop.Gameplay
             Vector2 movementVector = _movementPath.First() - tilePosition;
             return movementVector.normalized;
         }
-        
     }
 }
