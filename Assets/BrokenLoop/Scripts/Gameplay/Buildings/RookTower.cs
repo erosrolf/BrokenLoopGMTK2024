@@ -1,7 +1,6 @@
 using System.Collections;
 using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
 using BrokenLoop.Gameplay;
-using MovementSystem.Interfaces;
 using UnityEngine;
 
 namespace BrokenLoop.Scripts.TileObjects

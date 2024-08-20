@@ -16,7 +16,7 @@ namespace BrokenLoop.Gameplay
         {
             transform.position = position;
         }
-        public abstract void ConstructPath(Vector2Int[] path);
+        public abstract void ConstructPath(Vector2[] path);
         public abstract void Move(Vector3 direction);
         public abstract void Attack();
         public abstract void TakeDamage(int damage);

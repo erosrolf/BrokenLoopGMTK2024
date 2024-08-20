@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using MovementSystem;
@@ -7,15 +6,17 @@ using UnityEngine;
 
 namespace BrokenLoop.Gameplay
 {
-    [RequireComponent(typeof(MovementWithRigidbody2d))]
     [RequireComponent(typeof(SpriteRenderer))]
     public class MeleeOrkEnemy : BaseEnemy, IDamagable, IAttackable, IMovement
     {
+        [SerializeField] private float _moveSpeed = 2f;
+        
         private MovementWithRigidbody2d _movement;
-        private Queue<Vector2Int> _movementPath;
+        private List<Vector2> _movementPath;
         private SpriteRenderer _spriteRenderer;
         private CircleCollider2D _triggerCollider;
         private SingleTargetAttackStrategy _attackStrategy;
+        private int _currentTargetIndex = 0;
 
         #region MONO
         private void Awake()
@@ -43,17 +44,14 @@ namespace BrokenLoop.Gameplay
         }
         #endregion
 
-        private void FixedUpdate()
+        private void Update()
         {
-            if (_movementPath.Count > 0)
-            {
-                Move((Vector3)CalculateDirection());
-            }
+            MoveAlongPath();
         }
         
-        public override void ConstructPath(Vector2Int[] path)
+        public override void ConstructPath(Vector2[] path)
         {
-            _movementPath = new Queue<Vector2Int>(path);
+            _movementPath = new List<Vector2>(path);
         }
 
         public override void Move(Vector3 direction)
@@ -79,29 +77,18 @@ namespace BrokenLoop.Gameplay
             }
         }
 
-        private Vector2 CalculateDirection()
+        private void MoveAlongPath()
         {
-            if (_movementPath.Count == 0)
-            {
-                return Vector2.zero;
-            }
+            if (_currentTargetIndex >= _movementPath.Count) return;
             
-            Vector2Int tilePosition = new Vector2Int(
-                Mathf.FloorToInt(transform.position.x),
-                Mathf.FloorToInt(transform.position.y)
-            );
-            if (_movementPath.First() == tilePosition)
-            {
-                _movementPath.Dequeue();
-            }
-            
-            if (_movementPath.Count == 0)
-            {
-                return Vector2.zero;
-            }
+            Vector2 targetPosition = _movementPath[_currentTargetIndex];
+            float step = _moveSpeed * Time.deltaTime;
 
-            Vector2 movementVector = _movementPath.First() - tilePosition;
-            return movementVector.normalized;
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+            if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                _currentTargetIndex++;
+            }
         }
     }
 }
