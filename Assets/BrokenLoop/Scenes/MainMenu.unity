@@ -213,7 +213,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1809842804}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
@@ -579,14 +579,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1809842804}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -640,7 +640,6 @@ GameObject:
   - component: {fileID: 410640654}
   - component: {fileID: 410640656}
   - component: {fileID: 410640655}
-  - component: {fileID: 410640657}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -687,7 +686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a6b8c4e35daa4a649ad1d3381bc18f8a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -705,18 +704,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410640653}
   m_CullTransparentMesh: 1
---- !u!114 &410640657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410640653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb7c34cb246834439166bb41d44791e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &490082448
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,9 +730,9 @@ AudioSource:
   m_GameObject: {fileID: 490082448}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6401477163923893547, guid: a3aa1bd4391ba31468ed475897d26ccd,
+  OutputAudioMixerGroup: {fileID: 2800322944977872699, guid: af3719373f271a344ac56af271d54d4f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1e97ddb88e8915a4dad90ceb23ab98a5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1cb5ca4278609c4e96737915d3691cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1409,7 +1396,7 @@ AudioSource:
   m_GameObject: {fileID: 1160635555}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5178325914748874560, guid: a3aa1bd4391ba31468ed475897d26ccd,
+  OutputAudioMixerGroup: {fileID: -5003132667950450699, guid: af3719373f271a344ac56af271d54d4f,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1956,7 +1943,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1809842804}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -2275,6 +2262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1809842803}
+  - component: {fileID: 1809842804}
   m_Layer: 0
   m_Name: Main Menu Manager
   m_TagString: Untagged
@@ -2297,6 +2285,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809842804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809842802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bb8fc416b720348bb13de52e4ffcac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: af3719373f271a344ac56af271d54d4f, type: 2}
+  musicSlider: {fileID: 21098822}
+  soundSlider: {fileID: 1985637876}
+  audioSource: {fileID: 1160635556}
+  test: {fileID: 8300000, guid: 79eddd2739aad944ba4c6c4619c4b816, type: 3}
 --- !u!1 &1819622527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,9 +2433,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1809842804}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SetSFXVolume
+        m_MethodName: TestAudioClipPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2440,9 +2445,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1809842804}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: TestAudioClipPlay
+        m_MethodName: SetSFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
