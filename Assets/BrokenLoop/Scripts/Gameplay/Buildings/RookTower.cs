@@ -7,7 +7,7 @@ using UnityEngine;
 namespace BrokenLoop.Scripts.TileObjects
 {
     [RequireComponent(typeof(BoomPlusAttack))]
-    public class RookTower : BaseBuilding, IAttackable, IDamagable, IMovement, IMovebleTilemap
+    public class RookTower : BaseBuilding, IAttackable, IDamagable, IMovebleTilemap
     {
         private BoomPlusAttack _boomPlusAttack;
         private IMovebleTilemap _movebleTilemap;
@@ -52,16 +52,6 @@ namespace BrokenLoop.Scripts.TileObjects
                 yield return new WaitForSeconds(delay);
                 _boomPlusAttack.Attack();
             }
-        }
-
-        public void Move(Vector3 direction)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RestorePosition(Vector3 position)
-        {
-            transform.position = position;
         }
 
         public bool Push(Vector3Int direction)

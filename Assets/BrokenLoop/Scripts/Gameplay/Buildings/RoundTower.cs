@@ -6,7 +6,7 @@ using UnityEngine;
 namespace BrokenLoop.Gameplay
 {
     [RequireComponent(typeof(BoomXAttack))]
-    public class RoundTower : BaseBuilding, IDamagable, IMovement, IMovebleTilemap
+    public class RoundTower : BaseBuilding, IDamagable, IMovebleTilemap
     {
         IMovebleTilemap _movebleTilemap;
 
@@ -34,16 +34,6 @@ namespace BrokenLoop.Gameplay
             StartCoroutine(AttackRoutine(3f));
         }
         
-        public void Move(Vector3 direction)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RestorePosition(Vector3 position)
-        {
-            transform.position = position;
-        }
-
         public bool Push(Vector3Int direction)
         {
             return _movebleTilemap.Push(direction);
