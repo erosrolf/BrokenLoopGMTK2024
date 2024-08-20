@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using Assets.BrokenLoop.Scripts.Gameplay.TileSystem;
 using BrokenLoop.Gameplay;
 using MovementSystem.Interfaces;
@@ -6,38 +6,52 @@ using UnityEngine;
 
 namespace BrokenLoop.Scripts.TileObjects
 {
-    public class RookTower : BaseBuilding, IDamagable, IMovement, IMovebleTilemap
+    [RequireComponent(typeof(BoomPlusAttack))]
+    public class RookTower : BaseBuilding, IAttackable, IDamagable, IMovebleTilemap
     {
-        private IAttackStrategy _attackStrategy;
-        private Health _health;
-        IMovebleTilemap _movebleTilemap;
+        private BoomPlusAttack _boomPlusAttack;
+        private IMovebleTilemap _movebleTilemap;
+
+        [SerializeField, Range(0.1f, 1f)] private float _cooldown;
+        public bool IsCanAttack { get; private set; }
+
         private void Awake()
         {
+            Health = 10;
             ID = _lastID++.ToString();
+            _boomPlusAttack = GetComponent<BoomPlusAttack>();
+            IsCanAttack = true;
+            _movebleTilemap = new MoveObjectOnTilemap(gameObject);
         }
 
         private void Start()
         {
-            _movebleTilemap = new MoveObjectOnTilemap(gameObject);
-        }
-        public void Attack(IDamagable[] targets, IAttackStrategy attackStrategy)
-        {
-            throw new System.NotImplementedException();
+            StartCoroutine(AttackRoutine(3f));
         }
 
-        public void TakeDamage(int damage)
+        public void Attack()
         {
-            throw new System.NotImplementedException();
+            if (IsCanAttack)
+            {
+                _boomPlusAttack.Attack();
+                IsCanAttack = false;
+                StartCoroutine(ResetAttackCooldown());
+            }
         }
 
-        public void Move(Vector3 direction)
+        private IEnumerator ResetAttackCooldown()
         {
-            throw new System.NotImplementedException();
+            yield return new WaitForSeconds(_cooldown);
+            IsCanAttack = true;
         }
 
-        public void RestorePosition(Vector3 position)
+        private IEnumerator AttackRoutine(float delay)
         {
-            transform.position = position;
+            while (true)
+            {
+                yield return new WaitForSeconds(delay);
+                _boomPlusAttack.Attack();
+            }
         }
 
         public bool Push(Vector3Int direction)

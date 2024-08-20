@@ -6,6 +6,8 @@ namespace BrokenLoop.Scripts.Gameplay.Buildings
 {
     public class BuildingCollection
     {
+        public int Count => _buildings.Count;
+        
         private static BuildingCollection _instance;
         public static BuildingCollection Instance
         {
@@ -35,7 +37,7 @@ namespace BrokenLoop.Scripts.Gameplay.Buildings
             }
         }
 
-        public void UnregisterEnemy(string id)
+        public void UnregisterBuilding(string id)
         {
             var building = GetBuildingById(id);
             if (building != null)

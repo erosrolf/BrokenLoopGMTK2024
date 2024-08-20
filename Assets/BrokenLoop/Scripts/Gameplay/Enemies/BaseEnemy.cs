@@ -7,7 +7,8 @@ namespace BrokenLoop.Gameplay
     public abstract class BaseEnemy : MonoBehaviour, IMovement, IAttackable, IDamagable
     {
         public string ID { get; protected set; }
-        protected Health _health;
+        public int Health { get; protected set; }
+        
         protected float _speed;
         protected static uint _lastId;
 
@@ -17,10 +18,7 @@ namespace BrokenLoop.Gameplay
         }
         public abstract void ConstructPath(Vector2Int[] path);
         public abstract void Move(Vector3 direction);
-
-
-        public abstract void Attack(IDamagable target, IAttackStrategy attackStrategy);
-
-        public void TakeDamage(int damage) => _health.TakeDamage(damage);
+        public abstract void Attack();
+        public abstract void TakeDamage(int damage);
     }
 }

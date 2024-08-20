@@ -62,9 +62,9 @@ namespace BrokenLoop.Gameplay
         {
             _tilePrefabs = new Dictionary<EBuildingType, GameObject>
             {
-                { EBuildingType.RookTower , Resources.Load<GameObject>("Towers/RookTowerPrefab")},
-                { EBuildingType.RoundTower , Resources.Load<GameObject>("Towers/RoundTowerPrefab")},
-                { EBuildingType.Tron, Resources.Load<GameObject>("TronPrefab")}
+                { EBuildingType.RookTower , Resources.Load<GameObject>("Buildings/RookTowerPrefab")},
+                { EBuildingType.RoundTower , Resources.Load<GameObject>("Buildings/RoundTowerPrefab")},
+                { EBuildingType.Tron, Resources.Load<GameObject>("Buildings/TronPrefab")}
             };
         }
     }
