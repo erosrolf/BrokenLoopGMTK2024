@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f335eae026bab4548ad2e9f42a054ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetBorder: 0.5
+  offsetBorder: 0
 --- !u!114 &2839254461931924022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,4 +59,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capsule: {fileID: 6118992122333021106, guid: 3ed685c5f2609244595fbae31754b436, type: 3}
-  timeSpawnCapsule: 10
+  timeSpawnCapsule: 2
